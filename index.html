@@ -34,6 +34,31 @@
         button:hover {
             background-color: darkred;
         }
+        .bar-container {
+            margin-top: 4em;
+            margin-bottom: 1em;
+        }
+        .bar {
+            width: 20%;
+            background-color: #ddd;
+            text-align: center;
+            color: black;
+            margin-bottom: 0.5em;
+        }
+        .computer-bar {
+            background-color: red;
+        }
+        .phone-bar {
+            background-color: green;
+        }
+        .external-bar {
+            background-color: blue;
+        }
+        .bar-label {
+            display: block;
+            text-align: center;
+        }
+
     </style>
 
     <!-- Firebase App (core) and Firestore -->
@@ -143,6 +168,21 @@
     <div class="form-section">
         <button type="submit">SUBMIT</button>
     </div>
+
+    <div class="form-section" id="barGraph">
+    <div class="bar-container">
+        <div class="bar computer-bar" id="computerBar"></div>
+        <span class="bar-label">Computers</span>
+    </div>
+    <div class="bar-container">
+        <div class="bar phone-bar" id="phoneBar"></div>
+        <span class="bar-label">Phones</span>
+    </div>
+    <div class="bar-container">
+        <div class="bar external-bar" id="externalBar"></div>
+        <span class="bar-label">External Storage Devices</span>
+    </div>
+</div>
 
     <script>
         // Assuming Firebase has already been initialized in the <head> section
