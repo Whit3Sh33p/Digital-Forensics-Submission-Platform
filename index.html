@@ -2,120 +2,79 @@
 <html>
 <head>
     <title>Digital Forensics Submission Platform</title>
-    <!-- Firebase App is always required and must be first -->
-    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
-    <!-- Add Firebase products that you want to use -->
-    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script>
-    <script>
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyD9fwYhKTXLmybjCFmQWVfLCSj2VJz-x8A",
-            authDomain: "digitalforensicsplatform.firebaseapp.com",
-            projectId: "digitalforensicsplatform",
-            storageBucket: "digitalforensicsplatform.appspot.com",
-            messagingSenderId: "984765611457",
-            appId: "1:984765611457:web:2f7c3d7121ad3cd69a4340",
-            measurementId: "G-7HG9WG9DZK"
-        };
-
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        // If you're using Firebase Analytics, you can initialize it here
-        // firebase.analytics();
-    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: darkgrey;
+            text-decoration: underline;
+        }
+        .form-section {
+            margin-bottom: 20px; /* 2 spaces between sections */
+        }
+        #totalDisplay {
+            margin-left: 20px;
+            display: inline-block; /* Aligns Total with dropdowns */
+        }
+        #comments {
+            width: 100%;
+            height: 120px; /* 4 times larger */
+        }
+        button {
+            background-color: red;
+            color: white;
+            padding: 20px; /* 4 times larger */
+            font-size: large;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: darkred;
+        }
+    </style>
+    <!-- Firebase and other scripts would go here -->
 </head>
 <body>
     <h1>Welcome to the Digital Forensics Submission Platform</h1>
 
-    <!-- User Details -->
-    <div>
+    <div class="form-section">
         <label for="userDetails">User Details:</label>
         <input type="text" id="userDetails" name="userDetails">
     </div>
 
-    <!-- Department Dropdown -->
-    <div>
+    <div class="form-section">
         <label for="department">Select Department:</label>
         <select id="department">
-            <option value="Bloxwich SOMS">Bloxwich SOMS</option>
-            <option value="Bourneville SOMS">Bourneville SOMS</option>
-            <option value="Coventry SOMS">Coventry SOMS</option>
-            <option value="Erdington SOMS">Erdington SOMS</option>
-            <option value="OCSET">OCSET</option>
-            <option value="Wolverhampton SOMS">Wolverhampton SOMS</option>
-            <option value="Bloxwich Child PPU">Bloxwich Child PPU</option>
-            <option value="Coventry Child PPU">Coventry Child PPU</option>
-            <option value="Erdington Child PPU">Erdington Child PPU</option>
-            <option value="Wolverhampton Child PPU">Wolverhampton Child PPU</option>
+            <!-- Department options here -->
         </select>
     </div>
 
-    <!-- Device Count Dropdowns -->
-    <div>
+    <div class="form-section">
         <label for="computers">Computers:</label>
-        <select id="computers">
-            <!-- Options 0 to 10 -->
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-        </select>
+        <select id="computers"> <!-- Options 0 to 10 --> </select>
 
         <label for="phones">Phones:</label>
-        <select id="phones">
-            <!-- Options 0 to 10 -->
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-        </select>
+        <select id="phones"> <!-- Options 0 to 10 --> </select>
 
         <label for="externalStorage">External Storage Devices:</label>
-        <select id="externalStorage">
-            <!-- Options 0 to 10 -->
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-        </select>
+        <select id="externalStorage"> <!-- Options 0 to 10 --> </select>
+
+        <div id="totalDisplay">
+            <label>Total:</label>
+            <span id="total">0</span>
+        </div>
     </div>
 
-    <!-- Comments Box -->
-    <div>
+    <div class="form-section">
         <label for="comments">Comments:</label>
         <textarea id="comments" name="comments" maxlength="250"></textarea>
     </div>
 
-    <!-- Total Display -->
-    <div id="totalDisplay">
-        <label>Total:</label>
-        <span id="total">0</span>
-    </div>
-
-    <!-- Submit Button -->
-    <div>
-        <button type="submit">Submit</button>
+    <div class="form-section">
+        <button type="submit">SUBMIT</button>
     </div>
 
     <!-- Scripts for handling interactions would go here -->
