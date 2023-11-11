@@ -1,44 +1,30 @@
-<!DOCTYPE html>
-<html>
 <head>
     <title>Digital Forensics Submission Platform</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        h1 {
-            color: black;
-            text-decoration: underline;
-        }
-        .form-section {
-            margin-bottom: 20px; /* 2 spaces between sections */
-        }
-        #totalDisplay {
-            margin-left: 20px;
-            display: inline-block; /* Aligns Total with dropdowns */
-        }
-        #comments {
-            width: 100%;
-            height: 120px; /* 4 times larger */
-        }
-        button {
-            background-color: red;
-            color: white;
-            padding: 20px; /* 4 times larger */
-            font-size: large;
-            font-weight: bold;
-            border: none;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: darkred;
-        }
+        /* ... existing style ... */
     </style>
-    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-firestore.js"></script>
 
-    <!--other scripts would go here -->
+    <!-- Firebase Initialization -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-firestore.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID",
+            measurementId: "YOUR_MEASUREMENT_ID"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    
+    <!-- Other scripts can be added here if necessary -->
 </head>
+
 <body>
     <h1>Welcome to the Digital Forensics Submission Platform</h1>
 
@@ -60,7 +46,6 @@
     <option value="Coventry Child PPU">Coventry Child PPU</option>
     <option value="Bloxwich Child PPU">Bloxwich Child PPU</option>
     <option value="Erdington Child PPU">Erdington Child PPU</option>
-</select>
 
         </select>
     </div>
