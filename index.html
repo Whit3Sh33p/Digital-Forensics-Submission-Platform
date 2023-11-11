@@ -1,7 +1,39 @@
+<!DOCTYPE html>
+<html>
 <head>
     <title>Digital Forensics Submission Platform</title>
     <style>
-        /* ... existing styles ... */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: black;
+            text-decoration: underline;
+        }
+        .form-section {
+            margin-bottom: 20px; /* 2 spaces between sections */
+        }
+        #totalDisplay {
+            margin-left: 20px;
+            display: inline-block; /* Aligns Total with dropdowns */
+        }
+        #comments {
+            width: 100%;
+            height: 120px; /* 4 times larger */
+        }
+        button {
+            background-color: red;
+            color: white;
+            padding: 20px; /* 4 times larger */
+            font-size: large;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: darkred;
+        }
     </style>
 
     <!-- Firebase App (core) and Firestore -->
@@ -23,11 +55,7 @@
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
     </script>
-    
-    <!-- Other scripts can be added here if necessary -->
 </head>
-
-
 <body>
     <h1>Welcome to the Digital Forensics Submission Platform</h1>
 
@@ -38,18 +66,17 @@
 
     <div class="form-section">
         <label for="department">Select Department:</label>
-        <select id="department" required>    
-    <option value="Bloxwich SOMS">Bloxwich SOMS</option>
-    <option value="Bourneville SOMS">Bourneville SOMS</option>
-    <option value="Coventry SOMS">Coventry SOMS</option>
-    <option value="Erdington SOMS">Erdington SOMS</option>
-    <option value="OCSET">OCSET</option>
-    <option value="Wolverhampton SOMS">Wolverhampton SOMS</option>
-    <option value="Wolverhampton Child PPU">Wolverhampton Child PPU</option>
-    <option value="Coventry Child PPU">Coventry Child PPU</option>
-    <option value="Bloxwich Child PPU">Bloxwich Child PPU</option>
-    <option value="Erdington Child PPU">Erdington Child PPU</option>
-
+        <select id="department" required>
+            <option value="Bloxwich SOMS">Bloxwich SOMS</option>
+            <option value="Bourneville SOMS">Bourneville SOMS</option>
+            <option value="Coventry SOMS">Coventry SOMS</option>
+            <option value="Erdington SOMS">Erdington SOMS</option>
+            <option value="OCSET">OCSET</option>
+            <option value="Wolverhampton SOMS">Wolverhampton SOMS</option>
+            <option value="Wolverhampton Child PPU">Wolverhampton Child PPU</option>
+            <option value="Coventry Child PPU">Coventry Child PPU</option>
+            <option value="Bloxwich Child PPU">Bloxwich Child PPU</option>
+            <option value="Erdington Child PPU">Erdington Child PPU</option>
         </select>
     </div>
 
@@ -58,15 +85,7 @@
         <select id="computers">
             <!-- Options 0 to 10 -->
             <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
+            <!-- ... more options ... -->
             <option value="10">10</option>
         </select>
 
@@ -74,15 +93,7 @@
         <select id="phones">
             <!-- Options 0 to 10 -->
             <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
+            <!-- ... more options ... -->
             <option value="10">10</option>
         </select>
 
@@ -90,15 +101,7 @@
         <select id="externalStorage">
             <!-- Options 0 to 10 -->
             <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
+            <!-- ... more options ... -->
             <option value="10">10</option>
         </select>
 
@@ -110,7 +113,7 @@
 
     <div class="form-section">
         <label for="comments">Comments:</label>
-        <textarea id="comments" name="comments" maxlength="250"></textarea>
+        <textarea id="comments" name="comments" maxlength="250" required></textarea>
     </div>
 
     <div class="form-section">
@@ -118,48 +121,46 @@
     </div>
 
     <script>
-    // Assuming Firebase has already been initialized in the <head> section
+        // Assuming Firebase has already been initialized in the <head> section
 
-    // Get a reference to the Firestore database
-    var db = firebase.firestore();
+        // Get a reference to the Firestore database
+        var db = firebase.firestore();
 
-    function submitForm() {
-        var userDetails = document.getElementById("userDetails").value;
-        var department = document.getElementById("department").value;
-        var computers = parseInt(document.getElementById("computers").value, 10);
-        var phones = parseInt(document.getElementById("phones").value, 10);
-        var externalStorage = parseInt(document.getElementById("externalStorage").value, 10);
-        var comments = document.getElementById("comments").value;
+        function submitForm() {
+            var userDetails = document.getElementById("userDetails").value;
+            var department = document.getElementById("department").value;
+            var computers = parseInt(document.getElementById("computers").value, 10);
+            var phones = parseInt(document.getElementById("phones").value, 10);
+            var externalStorage = parseInt(document.getElementById("externalStorage").value, 10);
+            var comments = document.getElementById("comments").value;
 
-        // Add a new document to the 'submissions' collection
-        db.collection("submissions").add({
-            userDetails: userDetails,
-            department: department,
-            computers: computers,
-            phones: phones,
-            externalStorage: externalStorage,
-            comments: comments,
-            timestamp: firebase.firestore.FieldValue.serverTimestamp() // Adds a timestamp
-        })
-        .then(function(docRef) {
-            console.log("Document written with ID: ", docRef.id);
-            alert("Submission successful!");
-            // Optionally, reset the form here if needed
-        })
-        .catch(function(error) {
-            console.error("Error adding document: ", error);
-            alert("Error during submission.");
+            // Add a new document to the 'submissions' collection
+            db.collection("submissions").add({
+                userDetails: userDetails,
+                department: department,
+                computers: computers,
+                phones: phones,
+                externalStorage: externalStorage,
+                comments: comments,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp() // Adds a timestamp
+            })
+            .then(function(docRef) {
+                console.log("Document written with ID: ", docRef.id);
+                alert("Submission successful!");
+                // Optionally, reset the form here if needed
+            })
+            .catch(function(error) {
+                console.error("Error adding document: ", error);
+                alert("Error during submission.");
+            });
+        }
+
+        // Event listener for the submit button
+        document.querySelector("button[type='submit']").addEventListener("click", function(event) {
+            event.preventDefault(); // Prevents the default form submission action
+            submitForm();
         });
-    }
+    </script>
 
-    // Event listener for the submit button
-    document.querySelector("button[type='submit']").addEventListener("click", function(event) {
-        event.preventDefault(); // Prevents the default form submission action
-        submitForm();
-    });
-</script>
-
-    <!-- Scripts for handling interactions would go here -->
 </body>
 </html>
-
