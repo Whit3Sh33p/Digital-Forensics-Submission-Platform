@@ -7,29 +7,117 @@
     <!-- Add Firebase products that you want to use -->
     <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script>
     <script>
-      // Import the functions you need from the SDKs you need
-      // These imports won't work in a static HTML file. They're meant for module-based environments.
-      // For a static site on GitHub pages, you'll use the Firebase object directly as shown below.
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyD9fwYhKTXLmybjCFmQWVfLCSj2VJz-x8A",
+            authDomain: "digitalforensicsplatform.firebaseapp.com",
+            projectId: "digitalforensicsplatform",
+            storageBucket: "digitalforensicsplatform.appspot.com",
+            messagingSenderId: "984765611457",
+            appId: "1:984765611457:web:2f7c3d7121ad3cd69a4340",
+            measurementId: "G-7HG9WG9DZK"
+        };
 
-      // Your web app's Firebase configuration
-      const firebaseConfig = {
-        apiKey: "AIzaSyD9fwYhKTXLmybjCFmQWVfLCSj2VJz-x8A",
-        authDomain: "digitalforensicsplatform.firebaseapp.com",
-        projectId: "digitalforensicsplatform",
-        storageBucket: "digitalforensicsplatform.appspot.com",
-        messagingSenderId: "984765611457",
-        appId: "1:984765611457:web:2f7c3d7121ad3cd69a4340",
-        measurementId: "G-7HG9WG9DZK"
-      };
-
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
-      // Firebase Analytics can be initialized here if needed
-      // firebase.analytics();
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        // If you're using Firebase Analytics, you can initialize it here
+        // firebase.analytics();
     </script>
 </head>
 <body>
     <h1>Welcome to the Digital Forensics Submission Platform</h1>
-    <!-- Your webpage content will go here -->
+
+    <!-- User Details -->
+    <div>
+        <label for="userDetails">User Details:</label>
+        <input type="text" id="userDetails" name="userDetails">
+    </div>
+
+    <!-- Department Dropdown -->
+    <div>
+        <label for="department">Select Department:</label>
+        <select id="department">
+            <option value="Bloxwich SOMS">Bloxwich SOMS</option>
+            <option value="Bourneville SOMS">Bourneville SOMS</option>
+            <option value="Coventry SOMS">Coventry SOMS</option>
+            <option value="Erdington SOMS">Erdington SOMS</option>
+            <option value="OCSET">OCSET</option>
+            <option value="Wolverhampton SOMS">Wolverhampton SOMS</option>
+            <option value="Bloxwich Child PPU">Bloxwich Child PPU</option>
+            <option value="Coventry Child PPU">Coventry Child PPU</option>
+            <option value="Erdington Child PPU">Erdington Child PPU</option>
+            <option value="Wolverhampton Child PPU">Wolverhampton Child PPU</option>
+        </select>
+    </div>
+
+    <!-- Device Count Dropdowns -->
+    <div>
+        <label for="computers">Computers:</label>
+        <select id="computers">
+            <!-- Options 0 to 10 -->
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        </select>
+
+        <label for="phones">Phones:</label>
+        <select id="phones">
+            <!-- Options 0 to 10 -->
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        </select>
+
+        <label for="externalStorage">External Storage Devices:</label>
+        <select id="externalStorage">
+            <!-- Options 0 to 10 -->
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        </select>
+    </div>
+
+    <!-- Comments Box -->
+    <div>
+        <label for="comments">Comments:</label>
+        <textarea id="comments" name="comments" maxlength="250"></textarea>
+    </div>
+
+    <!-- Total Display -->
+    <div id="totalDisplay">
+        <label>Total:</label>
+        <span id="total">0</span>
+    </div>
+
+    <!-- Submit Button -->
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+
+    <!-- Scripts for handling interactions would go here -->
 </body>
 </html>
