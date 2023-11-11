@@ -228,7 +228,7 @@
             document.getElementById("total").textContent = total;
         }
 
-        // Event listeners for dropdowns to update total
+       // Event listeners for dropdowns to update total
         document.getElementById("computers").addEventListener("change", updateTotal);
         document.getElementById("phones").addEventListener("change", updateTotal);
         document.getElementById("externalStorage").addEventListener("change", updateTotal);
@@ -241,7 +241,26 @@
             event.preventDefault(); // Prevents the default form submission action
             submitForm();
         });
-    </script>
 
+        // Add the department change event listener here
+        const departmentDropdown = document.getElementById("department");
+
+        departmentDropdown.addEventListener("change", (event) => {
+            const selectedDepartment = event.target.value;
+
+            // Query the database based on the selected department
+            db.collection("submissions")
+                .where("department", "==", selectedDepartment)
+                .get()
+                .then((querySnapshot) => {
+                    // Process the query results here and update the bar graph
+                    // You can access the data in querySnapshot.docs
+                    // Example: querySnapshot.docs.forEach(doc => { /* process each document */ });
+                })
+                .catch((error) => {
+                    console.error("Error querying the database: ", error);
+                });
+        });
+    </script>
 </body>
 </html>
