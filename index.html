@@ -118,6 +118,48 @@
         <button type="submit">SUBMIT</button>
     </div>
 
+    <script>
+    // Assuming Firebase has already been initialized in the <head> section
+
+    // Get a reference to the Firestore database
+    var db = firebase.firestore();
+
+    function submitForm() {
+        var userDetails = document.getElementById("userDetails").value;
+        var department = document.getElementById("department").value;
+        var computers = parseInt(document.getElementById("computers").value, 10);
+        var phones = parseInt(document.getElementById("phones").value, 10);
+        var externalStorage = parseInt(document.getElementById("externalStorage").value, 10);
+        var comments = document.getElementById("comments").value;
+
+        // Add a new document to the 'submissions' collection
+        db.collection("submissions").add({
+            userDetails: userDetails,
+            department: department,
+            computers: computers,
+            phones: phones,
+            externalStorage: externalStorage,
+            comments: comments,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp() // Adds a timestamp
+        })
+        .then(function(docRef) {
+            console.log("Document written with ID: ", docRef.id);
+            alert("Submission successful!");
+            // Optionally, reset the form here if needed
+        })
+        .catch(function(error) {
+            console.error("Error adding document: ", error);
+            alert("Error during submission.");
+        });
+    }
+
+    // Event listener for the submit button
+    document.querySelector("button[type='submit']").addEventListener("click", function(event) {
+        event.preventDefault(); // Prevents the default form submission action
+        submitForm();
+    });
+</script>
+
     <!-- Scripts for handling interactions would go here -->
 </body>
 </html>
