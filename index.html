@@ -155,6 +155,23 @@
             });
         }
 
+        // Function to calculate and update the total
+        function updateTotal() {
+            var computers = parseInt(document.getElementById("computers").value, 10);
+            var phones = parseInt(document.getElementById("phones").value, 10);
+            var externalStorage = parseInt(document.getElementById("externalStorage").value, 10);
+            var total = computers + phones + externalStorage;
+            document.getElementById("total").textContent = total;
+        }
+
+        // Event listeners for dropdowns to update total
+        document.getElementById("computers").addEventListener("change", updateTotal);
+        document.getElementById("phones").addEventListener("change", updateTotal);
+        document.getElementById("externalStorage").addEventListener("change", updateTotal);
+
+        // Initialize total when the page loads
+        updateTotal();
+
         // Event listener for the submit button
         document.querySelector("button[type='submit']").addEventListener("click", function(event) {
             event.preventDefault(); // Prevents the default form submission action
