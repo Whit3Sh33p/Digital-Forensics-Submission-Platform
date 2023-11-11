@@ -37,9 +37,10 @@
         .bar-container {
             margin-top: 4em;
             margin-bottom: 1em;
+            display: inline-block;
+            width: 20%;
         }
         .bar {
-            width: 20%;
             background-color: #ddd;
             text-align: center;
             color: black;
@@ -58,7 +59,6 @@
             display: block;
             text-align: center;
         }
-
     </style>
 
     <!-- Firebase App (core) and Firestore -->
@@ -170,19 +170,19 @@
     </div>
 
     <div class="form-section" id="barGraph">
-    <div class="bar-container">
-        <div class="bar computer-bar" id="computerBar"></div>
-        <span class="bar-label">Computers</span>
+        <div class="bar-container">
+            <div class="bar computer-bar" id="computerBar"></div>
+            <span class="bar-label">Computers</span>
+        </div>
+        <div class="bar-container">
+            <div class="bar phone-bar" id="phoneBar"></div>
+            <span class="bar-label">Phones</span>
+        </div>
+        <div class="bar-container">
+            <div class="bar external-bar" id="externalBar"></div>
+            <span class="bar-label">External Storage Devices</span>
+        </div>
     </div>
-    <div class="bar-container">
-        <div class="bar phone-bar" id="phoneBar"></div>
-        <span class="bar-label">Phones</span>
-    </div>
-    <div class="bar-container">
-        <div class="bar external-bar" id="externalBar"></div>
-        <span class="bar-label">External Storage Devices</span>
-    </div>
-</div>
 
     <script>
         // Assuming Firebase has already been initialized in the <head> section
@@ -228,7 +228,7 @@
             document.getElementById("total").textContent = total;
         }
 
-       // Event listeners for dropdowns to update total
+        // Event listeners for dropdowns to update total
         document.getElementById("computers").addEventListener("change", updateTotal);
         document.getElementById("phones").addEventListener("change", updateTotal);
         document.getElementById("externalStorage").addEventListener("change", updateTotal);
@@ -254,8 +254,26 @@
                 .get()
                 .then((querySnapshot) => {
                     // Process the query results here and update the bar graph
-                    // You can access the data in querySnapshot.docs
-                    // Example: querySnapshot.docs.forEach(doc => { /* process each document */ });
+                    querySnapshot.docs.forEach((doc) => {
+                        const data = doc.data();
+
+                        // Update the bar graph and text for computers
+                        const computersBar = document.getElementById("computerBar");
+                        const computersValue = data.computers;
+                        const computersBarHeight = (computersValue / 10) * 100;
+                        computersBar.style.height = computersBarHeight + "%";
+
+                        // Repeat similar code for phones and external storage
+                        const phoneBar = document.getElementById("phoneBar");
+                        const phoneValue = data.phones;
+                        const phoneBarHeight = (phoneValue / 10) * 100;
+                        phoneBar.style.height = phoneBarHeight + "%";
+
+                        const externalBar = document.getElementById("externalBar");
+                        const externalValue = data.externalStorage;
+                        const externalBarHeight = (externalValue / 10) * 100;
+                        externalBar.style.height = externalBarHeight + "%";
+                    });
                 })
                 .catch((error) => {
                     console.error("Error querying the database: ", error);
@@ -264,3 +282,4 @@
     </script>
 </body>
 </html>
+
